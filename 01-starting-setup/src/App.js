@@ -1,4 +1,4 @@
-// A React compoenent that is exported into index.js main root file where the react library is rendered
+// A React ROOT compoenent that is exported into index.js main root file where the react library is rendered
 // HTML code in this javascript code is called JSX (javascript XML), this is valid syntax because
 // NPM start transforms all this code into valid code for the web browser.
 // By right clicking on inspect webpage and going to debugger and checking out the bundle.js

@@ -1,4 +1,4 @@
-// This imports a ReactDOM object from the package.json file and this object provides
+// Our REACT STARTING component. This imports a ReactDOM object from the package.json file and this object provides
 // all the methods needed to render React components in the browser.
 import ReactDOM from 'react-dom/client';
 // Imports all the components of index.css into this index.js file
