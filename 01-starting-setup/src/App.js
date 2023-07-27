@@ -32,6 +32,10 @@ function App() {
     },
   ];
 
+  // Note that in e.g title={expenses[0].title}, the first title is the title in the ExpenseItem.js component,
+  // whilst the title coming from expenses[0].title comes from the array object we defined
+  // The first title MUST match the variable name in ExpenseItem.js (props.title), if it is props.title1, then
+  // we would have title1={expenses[0].title} and that would be valid syntax
   return (
     <div>
       <h2>Let's get started!</h2>
