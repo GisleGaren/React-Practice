@@ -1,5 +1,5 @@
 // With React components, it is typical to name the files with a capital letter
-import Card from "./Card";
+import Card from "../UI/Card";
 import "./ExpenseItem.css";
 import ExpenseDate from "./ExpenseDate";
 // It is very important to not use "class" in each html element, but instead className

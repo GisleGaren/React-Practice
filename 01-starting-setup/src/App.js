@@ -4,7 +4,11 @@
 // By right clicking on inspect webpage and going to debugger and checking out the bundle.js
 // subfile, we can see the React code that happens "under the hood" a.k.a the transformed code.
 
-import Expenses from "./components/Expenses";
+
+// REMEMBER THAT IN return () statement, we can ONLY RETURN 1 ELEMENT, so make sure we have a div parent container, or a 
+// custom react component!
+
+import Expenses from "./components/Expenses/Expenses";
 
 function App() {
   // the HTML code below is our desired target state, which is what we want REACT to render
