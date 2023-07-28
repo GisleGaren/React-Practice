@@ -1,5 +1,5 @@
 // With React components, it is typical to name the files with a capital letter
-
+import Card from "./Card";
 import "./ExpenseItem.css";
 import ExpenseDate from "./ExpenseDate";
 // It is very important to not use "class" in each html element, but instead className
@@ -10,9 +10,10 @@ import ExpenseDate from "./ExpenseDate";
 // instead of hardcoding everything
 // We could also use "object destructuring" by writing ({date, title, amount}) instead of (props)
 // in order to exchange data between components. You would also need to remove props.date to just date
+
 function ExpenseItem(props) {
   return (
-    <div className="expense-item">
+    <Card className="expense-item">
       <ExpenseDate
         date={props.date}
       ></ExpenseDate>
@@ -20,7 +21,7 @@ function ExpenseItem(props) {
         <h2> {props.title} </h2>
         <div className="expense-item__price"> {props.amount} kr</div>
       </div>
-    </div>
+    </Card>
   );
 }
 
