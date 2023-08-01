@@ -2,7 +2,7 @@ import ConceptItem from "./ConceptItem";
 
 function Concepts(props) {
   return (
-    <div>
+    <ul id="concepts">
       <ConceptItem
         title={props.content[0].title}
         image={props.content[0].image}
@@ -18,7 +18,7 @@ function Concepts(props) {
         image={props.content[2].image}
         description={props.content[2].description}
       ></ConceptItem>
-    </div>
+    </ul>
   );
 }
 
