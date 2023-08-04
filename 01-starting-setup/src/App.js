@@ -4,11 +4,11 @@
 // By right clicking on inspect webpage and going to debugger and checking out the bundle.js
 // subfile, we can see the React code that happens "under the hood" a.k.a the transformed code.
 
-
-// REMEMBER THAT IN return () statement, we can ONLY RETURN 1 ELEMENT, so make sure we have a div parent container, or a 
+// REMEMBER THAT IN return () statement, we can ONLY RETURN 1 ELEMENT, so make sure we have a div parent container, or a
 // custom react component!
 
 import Expenses from "./components/Expenses/Expenses";
+import NewExpense from "./components/NewExpense/NewExpense";
 
 function App() {
   // the HTML code below is our desired target state, which is what we want REACT to render
@@ -42,7 +42,7 @@ function App() {
   // we would have title1={expenses[0].title} and that would be valid syntax
   return (
     <div>
-      <h2>Let's get started!</h2>
+      <NewExpense></NewExpense>
       <Expenses items={expenses}></Expenses>
     </div>
   );
