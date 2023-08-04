@@ -8,19 +8,50 @@ const ExpenseForm = (props) => {
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
 
+  /* We can also drop the three separate useState() lines above and instead go for one
+  const [userInput, setUserInput] = useState({
+    enteredTitle: "",
+    enteredAmount: "",
+    enteredDate: ""
+  })
+  */
   const titleChangeHandler = (event) => {
     setEnteredTitle(event.target.value);
     console.log(event.target.value);
+    /* The tricky thing is that because we have a single useState object, it is of absolute essence that we change all the states, because if we only change one
+    portion of the useState which is enteredTitle, but not the two others, enteredAmount and enteredDate will be lost! To fix this, we use the spread operator
+    ...userInput which takes an object and takes all key value pairs and adds them to the new object, whilst enteredTitle is the only key getting overrided!
+    setUserInput({
+        ...userInput,
+        enteredTitle: event.target.value,
+    })
+    Another VERY IMPORTANT THING is that because React schedules state changes, we might not always get the latest state available towards our next one.
+    INCREMENTING a value ++ could potentially be incorrect because if the scheduler is too slow, we might increment an older state, think race condition! Therefore in updates
+    that are relatively frequent and sensitive to the correct states, we must use this method which GUARANTEES state updates.
+    setUserInput((prevState) => {
+        return { ...prevState, enteredTitle:event.target.value};
+    });
+    */
   };
 
   const amountChangeHandler = (event) => {
-    setEnteredTitle(event.target.value);
+    setEnteredAmount(event.target.value);
     console.log(event.target.value);
+    /*    setUserInput({
+        ...userInput,
+        enteredAmount: event.target.value,
+    })
+    */
   };
 
   const dateChangeHandler = (event) => {
-    setEnteredTitle(event.target.value);
+    setEnteredDate(event.target.value);
     console.log(event.target.value);
+    /*    setUserInput({
+        ...userInput,
+        enteredDate: event.target.value,
+    })
+    */
   };
 
   return (
