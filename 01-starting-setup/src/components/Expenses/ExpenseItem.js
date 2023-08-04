@@ -27,7 +27,8 @@ function ExpenseItem(props) {
   const [title, setTitle] = useState(props.title);
 
   const clickHandler = () => {
-    // By calling
+    // By calling clickHandler, we call setTitle, which doesn't make React immediately render, but it schedules a re-render
+    // it also doesn't re initialize anything, but it simply updates the state to its new format
     setTitle("Updated!");
     console.log(title);
   };
