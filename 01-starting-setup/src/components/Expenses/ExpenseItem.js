@@ -24,6 +24,7 @@ function ExpenseItem(props) {
   // whilst setTitle is a function we can call later to set a new title. useState() ALWAYS returns an array with exactly two elements
   // It is always the case that the first element is the current state value and the second element is a function to update that value.
   // By calling the function, we are essentially saying that React needs to re-evaluate the component function again.
+  /*
   const [title, setTitle] = useState(props.title);
 
   const clickHandler = () => {
@@ -31,7 +32,7 @@ function ExpenseItem(props) {
     // it also doesn't re initialize anything, but it simply updates the state to its new format
     setTitle("Updated!");
     console.log(title);
-  };
+  }; */
   return (
     <Card className="expense-item">
       <ExpenseDate date={props.date}></ExpenseDate>
@@ -39,7 +40,6 @@ function ExpenseItem(props) {
         <h2> {props.title} </h2>
         <div className="expense-item__price"> {props.amount} kr</div>
       </div>
-      <button onClick={clickHandler}>Change Title</button>
     </Card>
   );
 }

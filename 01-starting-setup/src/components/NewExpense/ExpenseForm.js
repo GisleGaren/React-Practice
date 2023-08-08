@@ -76,6 +76,10 @@ const ExpenseForm = (props) => {
     setEnteredDate("");
   };
 
+  // Here we have implemented two way binding in our <input> tags by adding value={} because now we don't just listen to changes
+  // in the input to update our state, but we also feed our state back into the input. That way, when we change the state,
+  // we also change the input. That's why we use two way binding to reset our input boxes using state!
+  // By implementing two-waybinding we are implementing a Controlled Component! Twoway bindings(controlled components) are especially good for forms!
   return (
     <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
