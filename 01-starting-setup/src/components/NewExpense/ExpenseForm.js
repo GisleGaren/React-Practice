@@ -54,12 +54,38 @@ const ExpenseForm = (props) => {
     */
   };
 
+  const submitHandler = (event) => {
+    // We have this because by default, by submitting forms, React will automatically send a request to a server hosting the webpage.
+    // We wanna handle all data submitted locally only on JavaScript and thus the page doesn't reload so taht we can handle our local data.
+    event.preventDefault();
+
+    const expenseData = {
+      title: enteredTitle,
+      amount: enteredAmount,
+      date: new Date(enteredDate),
+    };
+
+    // By calling props.onSaveExpenseData() we are essentially passing the function upwards to our NewExpense.js parent container
+    // where its function saveExpenseDataHandler function takes our above expenseData object as a parameter to its function.
+    // Thereby we can pass data from child container to parent container as opposed to our usual props method which only passes
+    // from parent to child.
+    props.onSaveExpenseData(expenseData);
+    // console.log(expenseData);
+    setEnteredTitle("");
+    setEnteredAmount("");
+    setEnteredDate("");
+  };
+
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
-          <input onChange={titleChangeHandler} type="text"></input>
+          <input
+            onChange={titleChangeHandler}
+            type="text"
+            value={enteredTitle}
+          ></input>
         </div>
         <div className="new-expense__control">
           <label>Amount</label>
@@ -68,6 +94,7 @@ const ExpenseForm = (props) => {
             type="number"
             min="0.01"
             step="0.01"
+            value={enteredAmount}
           ></input>
         </div>
         <div className="new-expense__control">
@@ -76,7 +103,8 @@ const ExpenseForm = (props) => {
             onChange={dateChangeHandler}
             type="date"
             min="2023-01-01"
-            max="2023-08-04"
+            max="2024-08-04"
+            value={enteredDate}
           ></input>
         </div>
       </div>

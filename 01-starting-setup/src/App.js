@@ -40,9 +40,15 @@ function App() {
   // whilst the title coming from expenses[0].title comes from the array object we defined
   // The first title MUST match the variable name in ExpenseItem.js (props.title), if it is props.title1, then
   // we would have title1={expenses[0].title} and that would be valid syntax
+
+  const addExpenseHandler = (expense) => {
+    console.log("In App.js");
+    console.log(expense);
+  };
+  // Convention: whenever we have "on" something, that means we are passing a FUNCTION as an argument. Hence onAddExpense
   return (
     <div>
-      <NewExpense></NewExpense>
+      <NewExpense onAddExpense={addExpenseHandler}></NewExpense>
       <Expenses items={expenses}></Expenses>
     </div>
   );
