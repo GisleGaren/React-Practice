@@ -18,21 +18,38 @@ function Expenses(props) {
     (expenses) => expenses.date.getFullYear().toString() === selectedYear
   );
 
+  let expensesContent = <p>No expenses found</p>
+
+  if(filteredExpenses.length > 0){
+    expensesContent =filteredExpenses.map((expense) => (
+      <ExpenseItem
+        key={expense.id}
+        title={expense.title}
+        amount={expense.amount}
+        date={expense.date}
+      ></ExpenseItem>
+    ));
+  }
+
+  // In filteredExpenses, we could instead do "filteredExpenses.length === 0 && <p>No Expenses Found </p>"
+  // which means that as long as the first condition before the && is true, the second part will render
+  // Then we could do filteredExpenses.length > 0 && filteredExpenses.map((expense) => ( etc etc etc))
   return (
     <Card className="expenses">
       <ExpenseFilter
         defaultYear={selectedYear}
         onExpenseFilterSave={expenseFilterSave}
       ></ExpenseFilter>
-
-      {filteredExpenses.map((expense) => (
+      {expensesContent}
+      {/*filteredExpenses.length === 0 ? <p>No Expenses Found.</p> : filteredExpenses.map((expense) => (
         <ExpenseItem
           key={expense.id}
           title={expense.title}
           amount={expense.amount}
           date={expense.date}
         ></ExpenseItem>
-      ))}
+      ))*/}
+      
     </Card>
   );
 }

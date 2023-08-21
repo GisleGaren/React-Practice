@@ -32,7 +32,7 @@ const DUMMY_EXPENSES = [
   },
 ];
 
-function App() {
+function App() { 
   const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
   // the HTML code below is our desired target state, which is what we want REACT to render
   // Convention is that lower case elements are built in elements, whilst uppercase are custom made elements
