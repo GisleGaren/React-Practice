@@ -60,9 +60,11 @@ const ExpenseForm = (props) => {
         // We wanna handle all data submitted locally only on JavaScript and thus the page doesn't reload so taht we can handle our local data.
         event.preventDefault();
 
+        // After we created the charts to display, we had to change amount: enteredAmount to amount: +enteredAmount because when adding multiple values,
+        // those numbers are added as Strings instead of numbers, which is why we had to force a numbers conversion with +enteredAmount
         const expenseData = {
             title: enteredTitle,
-            amount: enteredAmount,
+            amount: +enteredAmount,
             date: new Date(enteredDate)
         };
 
