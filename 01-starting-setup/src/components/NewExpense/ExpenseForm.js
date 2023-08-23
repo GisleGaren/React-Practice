@@ -7,6 +7,8 @@ const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
+  const [showExpenseForm, setShowExpenseForm] = useState(false);
+  const [showAddButton, setShowAddButton] = useState(true);
 
   /* We can also drop the three separate useState() lines above and instead go for one
   const [userInput, setUserInput] = useState({
@@ -74,48 +76,65 @@ const ExpenseForm = (props) => {
     setEnteredTitle("");
     setEnteredAmount("");
     setEnteredDate("");
+    setShowExpenseForm(false);
+    setShowAddButton(true);
   };
+
+  const cancelButton = (event) => {
+    setShowExpenseForm(false);
+  }
+
+  const showForm = (event) => {
+    setShowAddButton(false);
+    setShowExpenseForm(true);
+  }
+
+  let formContent = (<form onSubmit={submitHandler}>
+  <div className="new-expense__controls">
+    <div className="new-expense__control">
+      <label>Title</label>
+      <input
+        onChange={titleChangeHandler}
+        type="text"
+        value={enteredTitle}
+      ></input>
+    </div>
+    <div className="new-expense__control">
+      <label>Amount</label>
+      <input
+        onChange={amountChangeHandler}
+        type="number"
+        min="0.01"
+        step="0.01"
+        value={enteredAmount}
+      ></input>
+    </div>
+    <div className="new-expense__control">
+      <label>Date</label>
+      <input
+        onChange={dateChangeHandler}
+        type="date"
+        min="2019-01-01"
+        max="2022-12-31"
+        value={enteredDate}
+      ></input>
+    </div>
+  </div>
+  <div className="new-expense__actions">
+    <button onClick={cancelButton}> Cancel </button>
+    <button type="submit">Add Expense</button>
+  </div>
+</form>)
 
   // Here we have implemented two way binding in our <input> tags by adding value={} because now we don't just listen to changes
   // in the input to update our state, but we also feed our state back into the input. That way, when we change the state,
   // we also change the input. That's why we use two way binding to reset our input boxes using state!
   // By implementing two-waybinding we are implementing a Controlled Component! Twoway bindings(controlled components) are especially good for forms!
   return (
-    <form onSubmit={submitHandler}>
-      <div className="new-expense__controls">
-        <div className="new-expense__control">
-          <label>Title</label>
-          <input
-            onChange={titleChangeHandler}
-            type="text"
-            value={enteredTitle}
-          ></input>
-        </div>
-        <div className="new-expense__control">
-          <label>Amount</label>
-          <input
-            onChange={amountChangeHandler}
-            type="number"
-            min="0.01"
-            step="0.01"
-            value={enteredAmount}
-          ></input>
-        </div>
-        <div className="new-expense__control">
-          <label>Date</label>
-          <input
-            onChange={dateChangeHandler}
-            type="date"
-            min="2019-01-01"
-            max="2022-12-31"
-            value={enteredDate}
-          ></input>
-        </div>
-      </div>
-      <div className="new-expense__actions">
-        <button type="submit">Add Expense</button>
-      </div>
-    </form>
+    <div>
+      {showAddButton && <button onClick={showForm}> Add New Expense </button>}
+      {showExpenseForm && formContent}
+    </div>
   );
 };
 

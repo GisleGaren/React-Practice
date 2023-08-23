@@ -1,8 +1,8 @@
 import "./Expenses.css";
-import ExpenseItem from "./ExpenseItem";
 import Card from "../UI/Card";
 import ExpenseFilter from "./ExpensesFilter";
 import React, { useState } from "react";
+import ExpensesList from "./ExpensesList";
 
 function Expenses(props) {
   // Bonus if we want the dropdown menu to show 2020 as default instead of 2022
@@ -18,19 +18,6 @@ function Expenses(props) {
     (expenses) => expenses.date.getFullYear().toString() === selectedYear
   );
 
-  let expensesContent = <p>No expenses found</p>
-
-  if(filteredExpenses.length > 0){
-    expensesContent =filteredExpenses.map((expense) => (
-      <ExpenseItem
-        key={expense.id}
-        title={expense.title}
-        amount={expense.amount}
-        date={expense.date}
-      ></ExpenseItem>
-    ));
-  }
-
   // In filteredExpenses, we could instead do "filteredExpenses.length === 0 && <p>No Expenses Found </p>"
   // which means that as long as the first condition before the && is true, the second part will render
   // Then we could do filteredExpenses.length > 0 && filteredExpenses.map((expense) => ( etc etc etc))
@@ -40,7 +27,9 @@ function Expenses(props) {
         defaultYear={selectedYear}
         onExpenseFilterSave={expenseFilterSave}
       ></ExpenseFilter>
-      {expensesContent}
+      <ExpensesList
+        items={filteredExpenses}
+      ></ExpensesList>
       {/*filteredExpenses.length === 0 ? <p>No Expenses Found.</p> : filteredExpenses.map((expense) => (
         <ExpenseItem
           key={expense.id}

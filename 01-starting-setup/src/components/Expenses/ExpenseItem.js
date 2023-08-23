@@ -2,7 +2,7 @@
 
 // In order to for React to render again after its initial render, we need to introduce a "named import". useState is a function from the React
 // library and it allows us to see the updated values
-import React, { useState } from "react";
+import React from "react";
 import Card from "../UI/Card";
 import "./ExpenseItem.css";
 import ExpenseDate from "./ExpenseDate";
@@ -34,13 +34,15 @@ function ExpenseItem(props) {
     console.log(title);
   }; */
   return (
-    <Card className="expense-item">
-      <ExpenseDate date={props.date}></ExpenseDate>
-      <div className="expense-item__description">
-        <h2> {props.title} </h2>
-        <div className="expense-item__price"> {props.amount} kr</div>
-      </div>
-    </Card>
+    <li>
+      <Card className="expense-item">
+        <ExpenseDate date={props.date}></ExpenseDate>
+        <div className="expense-item__description">
+          <h2> {props.title} </h2>
+          <div className="expense-item__price"> {props.amount} kr</div>
+        </div>
+      </Card>
+    </li>
   );
 }
 
