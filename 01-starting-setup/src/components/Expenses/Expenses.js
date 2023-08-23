@@ -3,6 +3,7 @@ import Card from "../UI/Card";
 import ExpenseFilter from "./ExpensesFilter";
 import React, { useState } from "react";
 import ExpensesList from "./ExpensesList";
+import ExpensesChart from "./ExpensesChart";
 
 function Expenses(props) {
   // Bonus if we want the dropdown menu to show 2020 as default instead of 2022
@@ -27,6 +28,9 @@ function Expenses(props) {
         defaultYear={selectedYear}
         onExpenseFilterSave={expenseFilterSave}
       ></ExpenseFilter>
+      <ExpensesChart
+        expenses={filteredExpenses}
+      ></ExpensesChart>
       <ExpensesList
         items={filteredExpenses}
       ></ExpensesList>
