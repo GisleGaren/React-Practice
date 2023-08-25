@@ -5,15 +5,19 @@ import CourseInput from './components/CourseGoals/CourseInput/CourseInput';
 import './App.css';
 
 const App = () => {
+  // Begins by using a useState to initially render our array of 2 elements.
   const [courseGoals, setCourseGoals] = useState([
     { text: 'Do all exercises!', id: 'g1' },
     { text: 'Finish the course!', id: 'g2' }
   ]);
 
+  // This function is called from our CourseInput.js child component which passes off the text from the input box into this function
+  // and its parameter enteredText is the text from the input box in CourseInput.js
   const addGoalHandler = enteredText => {
+    // we insert an anonymous function as a parameter to update the array with a new one with a relevant id
     setCourseGoals(prevGoals => {
-      const updatedGoals = [...prevGoals];
-      updatedGoals.unshift({ text: enteredText, id: Math.random().toString() });
+      const updatedGoals = [...prevGoals]; // Creates a shallow copy of the previous goals array so that we don't directly modify the old array
+      updatedGoals.unshift({ text: enteredText, id: Math.random().toString() }); // unshift method shifts the new object to the start of the array as the first element
       return updatedGoals;
     });
   };
